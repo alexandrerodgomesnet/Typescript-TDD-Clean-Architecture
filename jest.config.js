@@ -1,10 +1,14 @@
-module.export = {
-    roots: ['<rootDir>/src'],
+const { resolve } = require('path');
+const root = resolve(__dirname);
+
+module.exports = {
+    preset: 'jest-preset-typescript',
+    rootDir: root,
+    displayName: 'root-tests',
     testEnvironment: 'node',
-    transform: {
-        '.+\\.ts$': 'ts-jest'
-    },
+    clearMocks: true,
     moduleNameMapper: {
-        '@/(.*)': '<rootDir>/src/$1'
+        '@src/(.*)': '<rootDir>/src/$1',
+        '@test/(.*)': '<rootDir>/test/$1',
     }
 }
